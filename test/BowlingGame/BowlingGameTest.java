@@ -1,7 +1,6 @@
 package BowlingGame;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
 
 public class BowlingGameTest
@@ -9,12 +8,32 @@ public class BowlingGameTest
   @Test
   public void testCreateGame()
   {
-    BowlingGame bg = new BowlingGame();
+    BowlingGame bg = new BowlingGame();    
+    assertEquals(bg.getTotalScore(), 0);
+  }
+  
+  @Test
+  public void testZeroScore()
+  {
+    BowlingGame bg = new BowlingGame();    
     bg.score(0);
+    assertEquals(bg.getTotalScore(), 0);
+  }
+  
+  @Test
+  public void testSingleScore()
+  {
+    BowlingGame bg = new BowlingGame();    
+    bg.score(1);
     assertEquals(bg.getTotalScore(), 1);
-
-
-// begin op score 0    
-// begin met 0 worpen
+  }
+  
+  @Test
+  public void testTwoScore()
+  {
+    BowlingGame bg = new BowlingGame();    
+    bg.score(1);
+    bg.score(1);
+    assertEquals(bg.getTotalScore(), 2); 
   }
 }
