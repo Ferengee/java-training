@@ -6,7 +6,7 @@ import org.junit.Test;
 public class BowlingGameTest
 {
   @Test
-  public void testCreateGame()
+  public void testNewGame()
   {
     BowlingGame bg = new BowlingGame();    
     assertEquals(bg.getTotalScore(), 0);
@@ -29,7 +29,7 @@ public class BowlingGameTest
   }
   
   @Test
-  public void testTwoScore()
+  public void testTwoScores()
   {
     BowlingGame bg = new BowlingGame();    
     bg.score(1);
