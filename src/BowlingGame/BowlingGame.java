@@ -6,7 +6,7 @@ public class BowlingGame
   
   public void score(int score)
   {
-    this.score = score;
+    this.score += score;
   }
 
   public int getTotalScore()
