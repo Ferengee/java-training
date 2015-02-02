@@ -13,7 +13,7 @@ public class BowlingGameTest
   }
   
   @Test
-  public void testZeroScore()
+  public void testGutterBall()
   {
     BowlingGame bg = new BowlingGame();    
     bg.score(0);
@@ -21,7 +21,7 @@ public class BowlingGameTest
   }
   
   @Test
-  public void testSingleScore()
+  public void testSingleBall()
   {
     BowlingGame bg = new BowlingGame();    
     bg.score(1);
@@ -29,7 +29,7 @@ public class BowlingGameTest
   }
   
   @Test
-  public void testTwoScores()
+  public void testTwoBalls()
   {
     BowlingGame bg = new BowlingGame();    
     bg.score(1);
