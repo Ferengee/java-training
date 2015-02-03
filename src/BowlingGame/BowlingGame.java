@@ -27,14 +27,14 @@ public class BowlingGame
     this.frames = frames;    
   }
   
-  public void score(int pins)
+  public void score(int pins) throws Exception
   {
     this.calculateBonus(pins);
     
     Frame currentFrame = this.getCurrentFrame();       
     currentFrame.score(pins);
     
-    if (currentFrame.isFinished())
+    if (currentFrame.isClosed())
     {
       currentFrameIndex++;
     }
@@ -50,7 +50,7 @@ public class BowlingGame
       {
         previousFrame.addBonus(pins);
       }
-      else if (previousFrame.isSpare() && currentFrame.getScoreIndex() == 0)
+      else if (previousFrame.isSpare() && currentFrame.isFirstRoll())
       {
         previousFrame.addBonus(pins);
       }

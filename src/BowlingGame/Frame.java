@@ -2,15 +2,20 @@ package BowlingGame;
 
 public class Frame 
 {
-  protected int[] scores = new int[2];
-  protected int scoreIndex = 0;
+  /** Max score (without bonus) that can be scored in one Frame */
+  final int MAX_SCORE = 10;
+  
+  /** Bonus points, when this Frame is a Strike or Spare */
   protected int bonus = 0;
-  protected int maxScore = 10;
+  
+  protected int currentRoll = 0;
+
+  protected int[] scores = new int[2];
   
   public int getScore()
   {
     int score = 0;
-    for (int i=0; i < scoreIndex; i++)
+    for (int i=0; i < currentRoll; i++)
     {
       score += scores[i];
     }
@@ -22,30 +27,38 @@ public class Frame
     return this.getScore() + this.bonus;
   }
 
-  void score(int score) 
+  public void score(int pins) throws Exception 
   {
-    scores[scoreIndex] = score;
-    scoreIndex++;
+    if (this.isClosed())
+      throw new Exception("Cannot score on a closed frame");
+    
+    scores[currentRoll] = pins;
+    currentRoll++;
   }
 
   public boolean isSpare() 
   {
-    return (this.getScore() == maxScore && this.scores[0] != maxScore);    
+    return (this.getScore() == MAX_SCORE && this.scores[0] != MAX_SCORE);    
   }
   
   public boolean isStrike()
   {
-    return this.scores[0] == maxScore;  
+    return this.scores[0] == MAX_SCORE;  
   }
   
-  public int getScoreIndex()
+  public boolean isFirstRoll()
   {
-    return scoreIndex;
+    return this.currentRoll == 0;
+  }
+  
+  public boolean isSecondRoll()
+  {
+    return this.currentRoll == 1;
   }
 
-  boolean isFinished() 
+  boolean isClosed() 
   {
-    return scoreIndex >= 2;
+    return currentRoll >= 2 || this.isStrike();
   }
 
   public int getBonus() 
